@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e60147a7357f4a9f8091266fb8717ec9" Name="Diagram1">
+        <EntityTypeShape EntityType="BodasModel.Agenda" Width="1.5" PointX="8.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.agendaServicio" Width="1.5" PointX="10.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Agencia" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Clientes" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Estados" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Horarios" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Hoteles" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Lugares" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Menu" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Moneda" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Paquetes" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Preguntas" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Roles" Width="1.5" PointX="3.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Servicios" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Submenu" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_tiposEvento" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.C_Usuarios" Width="1.5" PointX="6" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.Logs" Width="1.5" PointX="8.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.nombreClientes" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.paqueteServicio" Width="1.5" PointX="5.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BodasModel.preguntaRespuesta" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_Hoteles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_LugaresCena" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_LugaresCeremonia" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_Paquetes" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_tiposEvento" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_UsuariosCordinadora" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Agenda_C_UsuariosEjecutivo" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_agendaServicio_Agenda" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_agendaServicio_C_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Lugares_C_Hoteles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Paquetes_C_Hoteles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Preguntas_C_Hoteles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Servicios_C_Hoteles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_tiposEvento_C_Hoteles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Submenu_C_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_paqueteServicio_C_Paquetes" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_preguntaRespuesta_C_Preguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Usuarios_C_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_paqueteServicio_C_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_Logs_C_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BodasModel.FK_C_Horarios_C_Hoteles" />
+        <EntityTypeShape EntityType="BodasModel.C_Permisos" Width="1.5" PointX="9" PointY="12.125" />
+        <AssociationConnector Association="BodasModel.FK_C_Permisos_C_Roles" />
+        <AssociationConnector Association="BodasModel.FK_C_Permisos_C_Submenu" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

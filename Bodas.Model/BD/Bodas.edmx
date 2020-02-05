@@ -1,0 +1,1612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BodasnewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="fechaEvento" Type="datetime" />
+          <Property Name="idEjecutivo" Type="int" Nullable="false" />
+          <Property Name="idCordinadora" Type="int" />
+          <Property Name="fechaConfirmacion" Type="datetime" />
+          <Property Name="idLugarCeremonia" Type="int" />
+          <Property Name="idLugarCena" Type="int" />
+          <Property Name="idTipoCeremonia" Type="int" />
+          <Property Name="idTipoEvento" Type="int" />
+          <Property Name="idHoraEvento" Type="int" />
+          <Property Name="idhotel" Type="int" />
+          <Property Name="reserva" Type="varchar" MaxLength="50" />
+          <Property Name="bookingreference" Type="varchar" MaxLength="50" />
+          <Property Name="Pax" Type="int" />
+          <Property Name="correoAgencia" Type="varchar" MaxLength="100" />
+          <Property Name="idStatus" Type="int" />
+          <Property Name="idPaquete" Type="int" />
+          <Property Name="idCliente" Type="int" />
+        </EntityType>
+        <EntityType Name="agendaServicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAgenda" Type="int" Nullable="false" />
+          <Property Name="idServicio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Agencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="150" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="C_Clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="500" />
+          <Property Name="estado" Type="varchar" MaxLength="50" />
+          <Property Name="pais" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="C_Estados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Horarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hora" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Hoteles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="empresa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Lugares">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="icono" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="C_Moneda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Paquetes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+          <Property Name="clave" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="idMoneda" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="idSubmenu" Type="int" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Preguntas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+          <Property Name="pregunta" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="C_Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="C_Servicios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="nota" Type="varchar" MaxLength="250" />
+          <Property Name="idMoneda" Type="int" Nullable="false" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Submenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ruta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idMenu" Type="int" Nullable="false" />
+          <Property Name="icono" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="C_tiposEvento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar(max)" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="fechaAlta" Type="date" Nullable="false" />
+          <Property Name="tipoUsuario" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="tabla" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="columna" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="valorO" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="valorN" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="idusuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nombreClientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="paqueteServicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPaquete" Type="int" Nullable="false" />
+          <Property Name="idServicio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="preguntaRespuesta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPregunta" Type="int" Nullable="false" />
+          <Property Name="respuesta" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_Agenda_C_Clientes">
+          <End Role="C_Clientes" Type="Self.C_Clientes" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_Estados">
+          <End Role="C_Estados" Type="Self.C_Estados" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idhotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_LugaresCena">
+          <End Role="C_Lugares" Type="Self.C_Lugares" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Lugares">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idLugarCena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_LugaresCeremonia">
+          <End Role="C_Lugares" Type="Self.C_Lugares" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Lugares">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idLugarCeremonia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_Paquetes">
+          <End Role="C_Paquetes" Type="Self.C_Paquetes" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Paquetes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idPaquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_tiposEvento">
+          <End Role="C_tiposEvento" Type="Self.C_tiposEvento" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_tiposEvento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idTipoEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_UsuariosCordinadora">
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idCordinadora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_UsuariosEjecutivo">
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idEjecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agendaServicio_Agenda">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="1" />
+          <End Role="agendaServicio" Type="Self.agendaServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="agendaServicio">
+              <PropertyRef Name="idAgenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agendaServicio_C_Servicios">
+          <End Role="C_Servicios" Type="Self.C_Servicios" Multiplicity="1" />
+          <End Role="agendaServicio" Type="Self.agendaServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Servicios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="agendaServicio">
+              <PropertyRef Name="idServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Horarios_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Horarios" Type="Self.C_Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Horarios">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Lugares_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Lugares" Type="Self.C_Lugares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Lugares">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Paquetes_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Paquetes" Type="Self.C_Paquetes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Paquetes">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Permisos_C_Roles">
+          <End Role="C_Roles" Type="Self.C_Roles" Multiplicity="1" />
+          <End Role="C_Permisos" Type="Self.C_Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Permisos">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Permisos_C_Submenu">
+          <End Role="C_Submenu" Type="Self.C_Submenu" Multiplicity="1" />
+          <End Role="C_Permisos" Type="Self.C_Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Submenu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Permisos">
+              <PropertyRef Name="idSubmenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Preguntas_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Preguntas" Type="Self.C_Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Preguntas">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Servicios_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Servicios" Type="Self.C_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Servicios">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Submenu_C_Menu">
+          <End Role="C_Menu" Type="Self.C_Menu" Multiplicity="1" />
+          <End Role="C_Submenu" Type="Self.C_Submenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Submenu">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_tiposEvento_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_tiposEvento" Type="Self.C_tiposEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_tiposEvento">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Usuarios_C_Roles">
+          <End Role="C_Roles" Type="Self.C_Roles" Multiplicity="1" />
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Usuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_C_Usuarios">
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="1" />
+          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paqueteServicio_C_Paquetes">
+          <End Role="C_Paquetes" Type="Self.C_Paquetes" Multiplicity="1" />
+          <End Role="paqueteServicio" Type="Self.paqueteServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Paquetes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paqueteServicio">
+              <PropertyRef Name="idPaquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paqueteServicio_C_Servicios">
+          <End Role="C_Servicios" Type="Self.C_Servicios" Multiplicity="1" />
+          <End Role="paqueteServicio" Type="Self.paqueteServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Servicios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paqueteServicio">
+              <PropertyRef Name="idServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_preguntaRespuesta_C_Preguntas">
+          <End Role="C_Preguntas" Type="Self.C_Preguntas" Multiplicity="1" />
+          <End Role="preguntaRespuesta" Type="Self.preguntaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preguntaRespuesta">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BodasnewModelStoreContainer">
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="agendaServicio" EntityType="Self.agendaServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Agencia" EntityType="Self.C_Agencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Clientes" EntityType="Self.C_Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Estados" EntityType="Self.C_Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Horarios" EntityType="Self.C_Horarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Hoteles" EntityType="Self.C_Hoteles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Lugares" EntityType="Self.C_Lugares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Menu" EntityType="Self.C_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Moneda" EntityType="Self.C_Moneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Paquetes" EntityType="Self.C_Paquetes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Permisos" EntityType="Self.C_Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Preguntas" EntityType="Self.C_Preguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Roles" EntityType="Self.C_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Servicios" EntityType="Self.C_Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Submenu" EntityType="Self.C_Submenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_tiposEvento" EntityType="Self.C_tiposEvento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Usuarios" EntityType="Self.C_Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nombreClientes" EntityType="Self.nombreClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paqueteServicio" EntityType="Self.paqueteServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="preguntaRespuesta" EntityType="Self.preguntaRespuesta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Agenda_C_Clientes" Association="Self.FK_Agenda_C_Clientes">
+            <End Role="C_Clientes" EntitySet="C_Clientes" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_Estados" Association="Self.FK_Agenda_C_Estados">
+            <End Role="C_Estados" EntitySet="C_Estados" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_Hoteles" Association="Self.FK_Agenda_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_LugaresCena" Association="Self.FK_Agenda_C_LugaresCena">
+            <End Role="C_Lugares" EntitySet="C_Lugares" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_LugaresCeremonia" Association="Self.FK_Agenda_C_LugaresCeremonia">
+            <End Role="C_Lugares" EntitySet="C_Lugares" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_Paquetes" Association="Self.FK_Agenda_C_Paquetes">
+            <End Role="C_Paquetes" EntitySet="C_Paquetes" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_tiposEvento" Association="Self.FK_Agenda_C_tiposEvento">
+            <End Role="C_tiposEvento" EntitySet="C_tiposEvento" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_UsuariosCordinadora" Association="Self.FK_Agenda_C_UsuariosCordinadora">
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_UsuariosEjecutivo" Association="Self.FK_Agenda_C_UsuariosEjecutivo">
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agendaServicio_Agenda" Association="Self.FK_agendaServicio_Agenda">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="agendaServicio" EntitySet="agendaServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agendaServicio_C_Servicios" Association="Self.FK_agendaServicio_C_Servicios">
+            <End Role="C_Servicios" EntitySet="C_Servicios" />
+            <End Role="agendaServicio" EntitySet="agendaServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Horarios_C_Hoteles" Association="Self.FK_C_Horarios_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Horarios" EntitySet="C_Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Lugares_C_Hoteles" Association="Self.FK_C_Lugares_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Lugares" EntitySet="C_Lugares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Paquetes_C_Hoteles" Association="Self.FK_C_Paquetes_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Paquetes" EntitySet="C_Paquetes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Permisos_C_Roles" Association="Self.FK_C_Permisos_C_Roles">
+            <End Role="C_Roles" EntitySet="C_Roles" />
+            <End Role="C_Permisos" EntitySet="C_Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Permisos_C_Submenu" Association="Self.FK_C_Permisos_C_Submenu">
+            <End Role="C_Submenu" EntitySet="C_Submenu" />
+            <End Role="C_Permisos" EntitySet="C_Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Preguntas_C_Hoteles" Association="Self.FK_C_Preguntas_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Preguntas" EntitySet="C_Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Servicios_C_Hoteles" Association="Self.FK_C_Servicios_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Servicios" EntitySet="C_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Submenu_C_Menu" Association="Self.FK_C_Submenu_C_Menu">
+            <End Role="C_Menu" EntitySet="C_Menu" />
+            <End Role="C_Submenu" EntitySet="C_Submenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_tiposEvento_C_Hoteles" Association="Self.FK_C_tiposEvento_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_tiposEvento" EntitySet="C_tiposEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Usuarios_C_Roles" Association="Self.FK_C_Usuarios_C_Roles">
+            <End Role="C_Roles" EntitySet="C_Roles" />
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_C_Usuarios" Association="Self.FK_Logs_C_Usuarios">
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paqueteServicio_C_Paquetes" Association="Self.FK_paqueteServicio_C_Paquetes">
+            <End Role="C_Paquetes" EntitySet="C_Paquetes" />
+            <End Role="paqueteServicio" EntitySet="paqueteServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paqueteServicio_C_Servicios" Association="Self.FK_paqueteServicio_C_Servicios">
+            <End Role="C_Servicios" EntitySet="C_Servicios" />
+            <End Role="paqueteServicio" EntitySet="paqueteServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_preguntaRespuesta_C_Preguntas" Association="Self.FK_preguntaRespuesta_C_Preguntas">
+            <End Role="C_Preguntas" EntitySet="C_Preguntas" />
+            <End Role="preguntaRespuesta" EntitySet="preguntaRespuesta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BodasnewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaEvento" Type="DateTime" Precision="3" />
+          <Property Name="idEjecutivo" Type="Int32" Nullable="false" />
+          <Property Name="idCordinadora" Type="Int32" />
+          <Property Name="fechaConfirmacion" Type="DateTime" Precision="3" />
+          <Property Name="idLugarCeremonia" Type="Int32" />
+          <Property Name="idLugarCena" Type="Int32" />
+          <Property Name="idTipoCeremonia" Type="Int32" />
+          <Property Name="idTipoEvento" Type="Int32" />
+          <Property Name="idHoraEvento" Type="Int32" />
+          <Property Name="idhotel" Type="Int32" />
+          <Property Name="reserva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookingreference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pax" Type="Int32" />
+          <Property Name="correoAgencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idStatus" Type="Int32" />
+          <Property Name="idPaquete" Type="Int32" />
+          <Property Name="idCliente" Type="Int32" />
+          <NavigationProperty Name="C_Clientes" Relationship="Self.FK_Agenda_C_Clientes" FromRole="Agenda" ToRole="C_Clientes" />
+          <NavigationProperty Name="C_Estados" Relationship="Self.FK_Agenda_C_Estados" FromRole="Agenda" ToRole="C_Estados" />
+          <NavigationProperty Name="C_Hoteles" Relationship="Self.FK_Agenda_C_Hoteles" FromRole="Agenda" ToRole="C_Hoteles" />
+          <NavigationProperty Name="C_Lugares" Relationship="Self.FK_Agenda_C_LugaresCena" FromRole="Agenda" ToRole="C_Lugares" />
+          <NavigationProperty Name="C_Lugares1" Relationship="Self.FK_Agenda_C_LugaresCeremonia" FromRole="Agenda" ToRole="C_Lugares" />
+          <NavigationProperty Name="C_Paquetes" Relationship="Self.FK_Agenda_C_Paquetes" FromRole="Agenda" ToRole="C_Paquetes" />
+          <NavigationProperty Name="C_tiposEvento" Relationship="Self.FK_Agenda_C_tiposEvento" FromRole="Agenda" ToRole="C_tiposEvento" />
+          <NavigationProperty Name="C_Usuarios" Relationship="Self.FK_Agenda_C_UsuariosCordinadora" FromRole="Agenda" ToRole="C_Usuarios" />
+          <NavigationProperty Name="C_Usuarios1" Relationship="Self.FK_Agenda_C_UsuariosEjecutivo" FromRole="Agenda" ToRole="C_Usuarios" />
+          <NavigationProperty Name="agendaServicio" Relationship="Self.FK_agendaServicio_Agenda" FromRole="Agenda" ToRole="agendaServicio" />
+        </EntityType>
+        <EntityType Name="agendaServicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAgenda" Type="Int32" Nullable="false" />
+          <Property Name="idServicio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_agendaServicio_Agenda" FromRole="agendaServicio" ToRole="Agenda" />
+          <NavigationProperty Name="C_Servicios" Relationship="Self.FK_agendaServicio_C_Servicios" FromRole="agendaServicio" ToRole="C_Servicios" />
+        </EntityType>
+        <EntityType Name="C_Agencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C_Clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_Clientes" FromRole="C_Clientes" ToRole="Agenda" />
+        </EntityType>
+        <EntityType Name="C_Estados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_Estados" FromRole="C_Estados" ToRole="Agenda" />
+        </EntityType>
+        <EntityType Name="C_Horarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hora" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Hoteles" Relationship="BodasnewModel.FK_C_Horarios_C_Hoteles" FromRole="C_Horarios" ToRole="C_Hoteles" />
+        </EntityType>
+        <EntityType Name="C_Hoteles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_Hoteles" FromRole="C_Hoteles" ToRole="Agenda" />
+          <NavigationProperty Name="C_Lugares" Relationship="Self.FK_C_Lugares_C_Hoteles" FromRole="C_Hoteles" ToRole="C_Lugares" />
+          <NavigationProperty Name="C_Paquetes" Relationship="Self.FK_C_Paquetes_C_Hoteles" FromRole="C_Hoteles" ToRole="C_Paquetes" />
+          <NavigationProperty Name="C_Preguntas" Relationship="Self.FK_C_Preguntas_C_Hoteles" FromRole="C_Hoteles" ToRole="C_Preguntas" />
+          <NavigationProperty Name="C_Servicios" Relationship="Self.FK_C_Servicios_C_Hoteles" FromRole="C_Hoteles" ToRole="C_Servicios" />
+          <NavigationProperty Name="C_tiposEvento" Relationship="Self.FK_C_tiposEvento_C_Hoteles" FromRole="C_Hoteles" ToRole="C_tiposEvento" />
+          <NavigationProperty Name="C_Horarios" Relationship="BodasnewModel.FK_C_Horarios_C_Hoteles" FromRole="C_Hoteles" ToRole="C_Horarios" />
+        </EntityType>
+        <EntityType Name="C_Lugares">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_LugaresCena" FromRole="C_Lugares" ToRole="Agenda" />
+          <NavigationProperty Name="Agenda1" Relationship="Self.FK_Agenda_C_LugaresCeremonia" FromRole="C_Lugares" ToRole="Agenda" />
+          <NavigationProperty Name="C_Hoteles" Relationship="Self.FK_C_Lugares_C_Hoteles" FromRole="C_Lugares" ToRole="C_Hoteles" />
+        </EntityType>
+        <EntityType Name="C_Menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Submenu" Relationship="Self.FK_C_Submenu_C_Menu" FromRole="C_Menu" ToRole="C_Submenu" />
+        </EntityType>
+        <EntityType Name="C_Moneda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Paquetes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+          <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="idMoneda" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_Paquetes" FromRole="C_Paquetes" ToRole="Agenda" />
+          <NavigationProperty Name="C_Hoteles" Relationship="Self.FK_C_Paquetes_C_Hoteles" FromRole="C_Paquetes" ToRole="C_Hoteles" />
+          <NavigationProperty Name="paqueteServicio" Relationship="Self.FK_paqueteServicio_C_Paquetes" FromRole="C_Paquetes" ToRole="paqueteServicio" />
+        </EntityType>
+        <EntityType Name="C_Preguntas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+          <Property Name="pregunta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Hoteles" Relationship="Self.FK_C_Preguntas_C_Hoteles" FromRole="C_Preguntas" ToRole="C_Hoteles" />
+          <NavigationProperty Name="preguntaRespuesta" Relationship="Self.FK_preguntaRespuesta_C_Preguntas" FromRole="C_Preguntas" ToRole="preguntaRespuesta" />
+        </EntityType>
+        <EntityType Name="C_Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Usuarios" Relationship="Self.FK_C_Usuarios_C_Roles" FromRole="C_Roles" ToRole="C_Usuarios" />
+          <NavigationProperty Name="C_Permisos" Relationship="BodasnewModel.FK_C_Permisos_C_Roles" FromRole="C_Roles" ToRole="C_Permisos" />
+        </EntityType>
+        <EntityType Name="C_Servicios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="nota" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="idMoneda" Type="Int32" Nullable="false" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="agendaServicio" Relationship="Self.FK_agendaServicio_C_Servicios" FromRole="C_Servicios" ToRole="agendaServicio" />
+          <NavigationProperty Name="C_Hoteles" Relationship="Self.FK_C_Servicios_C_Hoteles" FromRole="C_Servicios" ToRole="C_Hoteles" />
+          <NavigationProperty Name="paqueteServicio" Relationship="Self.FK_paqueteServicio_C_Servicios" FromRole="C_Servicios" ToRole="paqueteServicio" />
+        </EntityType>
+        <EntityType Name="C_Submenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idMenu" Type="Int32" Nullable="false" />
+          <Property Name="icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Menu" Relationship="Self.FK_C_Submenu_C_Menu" FromRole="C_Submenu" ToRole="C_Menu" />
+          <NavigationProperty Name="C_Permisos" Relationship="BodasnewModel.FK_C_Permisos_C_Submenu" FromRole="C_Submenu" ToRole="C_Permisos" />
+        </EntityType>
+        <EntityType Name="C_tiposEvento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_tiposEvento" FromRole="C_tiposEvento" ToRole="Agenda" />
+          <NavigationProperty Name="C_Hoteles" Relationship="Self.FK_C_tiposEvento_C_Hoteles" FromRole="C_tiposEvento" ToRole="C_Hoteles" />
+        </EntityType>
+        <EntityType Name="C_Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="fechaAlta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="tipoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_C_UsuariosCordinadora" FromRole="C_Usuarios" ToRole="Agenda" />
+          <NavigationProperty Name="Agenda1" Relationship="Self.FK_Agenda_C_UsuariosEjecutivo" FromRole="C_Usuarios" ToRole="Agenda" />
+          <NavigationProperty Name="C_Roles" Relationship="Self.FK_C_Usuarios_C_Roles" FromRole="C_Usuarios" ToRole="C_Roles" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_C_Usuarios" FromRole="C_Usuarios" ToRole="Logs" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tabla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="columna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valorO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valorN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idusuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Usuarios" Relationship="Self.FK_Logs_C_Usuarios" FromRole="Logs" ToRole="C_Usuarios" />
+        </EntityType>
+        <EntityType Name="nombreClientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="paqueteServicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPaquete" Type="Int32" Nullable="false" />
+          <Property Name="idServicio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Paquetes" Relationship="Self.FK_paqueteServicio_C_Paquetes" FromRole="paqueteServicio" ToRole="C_Paquetes" />
+          <NavigationProperty Name="C_Servicios" Relationship="Self.FK_paqueteServicio_C_Servicios" FromRole="paqueteServicio" ToRole="C_Servicios" />
+        </EntityType>
+        <EntityType Name="preguntaRespuesta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPregunta" Type="Int32" Nullable="false" />
+          <Property Name="respuesta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Preguntas" Relationship="Self.FK_preguntaRespuesta_C_Preguntas" FromRole="preguntaRespuesta" ToRole="C_Preguntas" />
+        </EntityType>
+        <Association Name="FK_Agenda_C_Clientes">
+          <End Role="C_Clientes" Type="Self.C_Clientes" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_Estados">
+          <End Role="C_Estados" Type="Self.C_Estados" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idhotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_LugaresCena">
+          <End Role="C_Lugares" Type="Self.C_Lugares" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Lugares">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idLugarCena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_LugaresCeremonia">
+          <End Role="C_Lugares" Type="Self.C_Lugares" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Lugares">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idLugarCeremonia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_Paquetes">
+          <End Role="C_Paquetes" Type="Self.C_Paquetes" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Paquetes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idPaquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_tiposEvento">
+          <End Role="C_tiposEvento" Type="Self.C_tiposEvento" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_tiposEvento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idTipoEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_UsuariosCordinadora">
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idCordinadora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_C_UsuariosEjecutivo">
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="idEjecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agendaServicio_Agenda">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="1" />
+          <End Role="agendaServicio" Type="Self.agendaServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="agendaServicio">
+              <PropertyRef Name="idAgenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agendaServicio_C_Servicios">
+          <End Role="C_Servicios" Type="Self.C_Servicios" Multiplicity="1" />
+          <End Role="agendaServicio" Type="Self.agendaServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Servicios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="agendaServicio">
+              <PropertyRef Name="idServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Lugares_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Lugares" Type="Self.C_Lugares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Lugares">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Paquetes_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Paquetes" Type="Self.C_Paquetes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Paquetes">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Preguntas_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Preguntas" Type="Self.C_Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Preguntas">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Servicios_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_Servicios" Type="Self.C_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Servicios">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_tiposEvento_C_Hoteles">
+          <End Role="C_Hoteles" Type="Self.C_Hoteles" Multiplicity="1" />
+          <End Role="C_tiposEvento" Type="Self.C_tiposEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_tiposEvento">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Submenu_C_Menu">
+          <End Role="C_Menu" Type="Self.C_Menu" Multiplicity="1" />
+          <End Role="C_Submenu" Type="Self.C_Submenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Submenu">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paqueteServicio_C_Paquetes">
+          <End Role="C_Paquetes" Type="Self.C_Paquetes" Multiplicity="1" />
+          <End Role="paqueteServicio" Type="Self.paqueteServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Paquetes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paqueteServicio">
+              <PropertyRef Name="idPaquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_preguntaRespuesta_C_Preguntas">
+          <End Role="C_Preguntas" Type="Self.C_Preguntas" Multiplicity="1" />
+          <End Role="preguntaRespuesta" Type="Self.preguntaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preguntaRespuesta">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Usuarios_C_Roles">
+          <End Role="C_Roles" Type="Self.C_Roles" Multiplicity="1" />
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Usuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paqueteServicio_C_Servicios">
+          <End Role="C_Servicios" Type="Self.C_Servicios" Multiplicity="1" />
+          <End Role="paqueteServicio" Type="Self.paqueteServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Servicios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paqueteServicio">
+              <PropertyRef Name="idServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_C_Usuarios">
+          <End Role="C_Usuarios" Type="Self.C_Usuarios" Multiplicity="1" />
+          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BodasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" />
+          <EntitySet Name="agendaServicio" EntityType="Self.agendaServicio" />
+          <EntitySet Name="C_Agencia" EntityType="Self.C_Agencia" />
+          <EntitySet Name="C_Clientes" EntityType="Self.C_Clientes" />
+          <EntitySet Name="C_Estados" EntityType="Self.C_Estados" />
+          <EntitySet Name="C_Horarios" EntityType="Self.C_Horarios" />
+          <EntitySet Name="C_Hoteles" EntityType="Self.C_Hoteles" />
+          <EntitySet Name="C_Lugares" EntityType="Self.C_Lugares" />
+          <EntitySet Name="C_Menu" EntityType="Self.C_Menu" />
+          <EntitySet Name="C_Moneda" EntityType="Self.C_Moneda" />
+          <EntitySet Name="C_Paquetes" EntityType="Self.C_Paquetes" />
+          <EntitySet Name="C_Preguntas" EntityType="Self.C_Preguntas" />
+          <EntitySet Name="C_Roles" EntityType="Self.C_Roles" />
+          <EntitySet Name="C_Servicios" EntityType="Self.C_Servicios" />
+          <EntitySet Name="C_Submenu" EntityType="Self.C_Submenu" />
+          <EntitySet Name="C_tiposEvento" EntityType="Self.C_tiposEvento" />
+          <EntitySet Name="C_Usuarios" EntityType="Self.C_Usuarios" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" />
+          <EntitySet Name="nombreClientes" EntityType="Self.nombreClientes" />
+          <EntitySet Name="paqueteServicio" EntityType="Self.paqueteServicio" />
+          <EntitySet Name="preguntaRespuesta" EntityType="Self.preguntaRespuesta" />
+          <AssociationSet Name="FK_Agenda_C_Clientes" Association="Self.FK_Agenda_C_Clientes">
+            <End Role="C_Clientes" EntitySet="C_Clientes" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_Estados" Association="Self.FK_Agenda_C_Estados">
+            <End Role="C_Estados" EntitySet="C_Estados" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_Hoteles" Association="Self.FK_Agenda_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_LugaresCena" Association="Self.FK_Agenda_C_LugaresCena">
+            <End Role="C_Lugares" EntitySet="C_Lugares" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_LugaresCeremonia" Association="Self.FK_Agenda_C_LugaresCeremonia">
+            <End Role="C_Lugares" EntitySet="C_Lugares" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_Paquetes" Association="Self.FK_Agenda_C_Paquetes">
+            <End Role="C_Paquetes" EntitySet="C_Paquetes" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_tiposEvento" Association="Self.FK_Agenda_C_tiposEvento">
+            <End Role="C_tiposEvento" EntitySet="C_tiposEvento" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_UsuariosCordinadora" Association="Self.FK_Agenda_C_UsuariosCordinadora">
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_C_UsuariosEjecutivo" Association="Self.FK_Agenda_C_UsuariosEjecutivo">
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agendaServicio_Agenda" Association="Self.FK_agendaServicio_Agenda">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="agendaServicio" EntitySet="agendaServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agendaServicio_C_Servicios" Association="Self.FK_agendaServicio_C_Servicios">
+            <End Role="C_Servicios" EntitySet="C_Servicios" />
+            <End Role="agendaServicio" EntitySet="agendaServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Lugares_C_Hoteles" Association="Self.FK_C_Lugares_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Lugares" EntitySet="C_Lugares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Paquetes_C_Hoteles" Association="Self.FK_C_Paquetes_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Paquetes" EntitySet="C_Paquetes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Preguntas_C_Hoteles" Association="Self.FK_C_Preguntas_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Preguntas" EntitySet="C_Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Servicios_C_Hoteles" Association="Self.FK_C_Servicios_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Servicios" EntitySet="C_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_tiposEvento_C_Hoteles" Association="Self.FK_C_tiposEvento_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_tiposEvento" EntitySet="C_tiposEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Submenu_C_Menu" Association="Self.FK_C_Submenu_C_Menu">
+            <End Role="C_Menu" EntitySet="C_Menu" />
+            <End Role="C_Submenu" EntitySet="C_Submenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paqueteServicio_C_Paquetes" Association="Self.FK_paqueteServicio_C_Paquetes">
+            <End Role="C_Paquetes" EntitySet="C_Paquetes" />
+            <End Role="paqueteServicio" EntitySet="paqueteServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_preguntaRespuesta_C_Preguntas" Association="Self.FK_preguntaRespuesta_C_Preguntas">
+            <End Role="C_Preguntas" EntitySet="C_Preguntas" />
+            <End Role="preguntaRespuesta" EntitySet="preguntaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Usuarios_C_Roles" Association="Self.FK_C_Usuarios_C_Roles">
+            <End Role="C_Roles" EntitySet="C_Roles" />
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paqueteServicio_C_Servicios" Association="Self.FK_paqueteServicio_C_Servicios">
+            <End Role="C_Servicios" EntitySet="C_Servicios" />
+            <End Role="paqueteServicio" EntitySet="paqueteServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_C_Usuarios" Association="Self.FK_Logs_C_Usuarios">
+            <End Role="C_Usuarios" EntitySet="C_Usuarios" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Horarios_C_Hoteles" Association="BodasnewModel.FK_C_Horarios_C_Hoteles">
+            <End Role="C_Hoteles" EntitySet="C_Hoteles" />
+            <End Role="C_Horarios" EntitySet="C_Horarios" />
+          </AssociationSet>
+          <EntitySet Name="C_Permisos" EntityType="BodasnewModel.C_Permisos" />
+          <AssociationSet Name="FK_C_Permisos_C_Roles" Association="BodasnewModel.FK_C_Permisos_C_Roles">
+            <End Role="C_Roles" EntitySet="C_Roles" />
+            <End Role="C_Permisos" EntitySet="C_Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C_Permisos_C_Submenu" Association="BodasnewModel.FK_C_Permisos_C_Submenu">
+            <End Role="C_Submenu" EntitySet="C_Submenu" />
+            <End Role="C_Permisos" EntitySet="C_Permisos" />
+          </AssociationSet>
+          </EntityContainer>
+        <Association Name="FK_C_Horarios_C_Hoteles">
+          <End Type="BodasnewModel.C_Hoteles" Role="C_Hoteles" Multiplicity="1" />
+          <End Type="BodasnewModel.C_Horarios" Role="C_Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Hoteles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Horarios">
+              <PropertyRef Name="idHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="C_Permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="idSubmenu" Type="Int32" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Roles" Relationship="BodasnewModel.FK_C_Permisos_C_Roles" FromRole="C_Permisos" ToRole="C_Roles" />
+          <NavigationProperty Name="C_Submenu" Relationship="BodasnewModel.FK_C_Permisos_C_Submenu" FromRole="C_Permisos" ToRole="C_Submenu" />
+        </EntityType>
+        <Association Name="FK_C_Permisos_C_Roles">
+          <End Type="BodasnewModel.C_Roles" Role="C_Roles" Multiplicity="1" />
+          <End Type="BodasnewModel.C_Permisos" Role="C_Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Permisos">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C_Permisos_C_Submenu">
+          <End Type="BodasnewModel.C_Submenu" Role="C_Submenu" Multiplicity="1" />
+          <End Type="BodasnewModel.C_Permisos" Role="C_Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Submenu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="C_Permisos">
+              <PropertyRef Name="idSubmenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BodasnewModelStoreContainer" CdmEntityContainer="BodasEntities">
+          <EntitySetMapping Name="Agenda">
+            <EntityTypeMapping TypeName="BodasnewModel.Agenda">
+              <MappingFragment StoreEntitySet="Agenda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaEvento" ColumnName="fechaEvento" />
+                <ScalarProperty Name="idEjecutivo" ColumnName="idEjecutivo" />
+                <ScalarProperty Name="idCordinadora" ColumnName="idCordinadora" />
+                <ScalarProperty Name="fechaConfirmacion" ColumnName="fechaConfirmacion" />
+                <ScalarProperty Name="idLugarCeremonia" ColumnName="idLugarCeremonia" />
+                <ScalarProperty Name="idLugarCena" ColumnName="idLugarCena" />
+                <ScalarProperty Name="idTipoCeremonia" ColumnName="idTipoCeremonia" />
+                <ScalarProperty Name="idTipoEvento" ColumnName="idTipoEvento" />
+                <ScalarProperty Name="idHoraEvento" ColumnName="idHoraEvento" />
+                <ScalarProperty Name="idhotel" ColumnName="idhotel" />
+                <ScalarProperty Name="reserva" ColumnName="reserva" />
+                <ScalarProperty Name="bookingreference" ColumnName="bookingreference" />
+                <ScalarProperty Name="Pax" ColumnName="Pax" />
+                <ScalarProperty Name="correoAgencia" ColumnName="correoAgencia" />
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="idPaquete" ColumnName="idPaquete" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="agendaServicio">
+            <EntityTypeMapping TypeName="BodasnewModel.agendaServicio">
+              <MappingFragment StoreEntitySet="agendaServicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idAgenda" ColumnName="idAgenda" />
+                <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Agencia">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Agencia">
+              <MappingFragment StoreEntitySet="C_Agencia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Clientes">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Clientes">
+              <MappingFragment StoreEntitySet="C_Clientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Estados">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Estados">
+              <MappingFragment StoreEntitySet="C_Estados">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Horarios">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Horarios">
+              <MappingFragment StoreEntitySet="C_Horarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Hoteles">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Hoteles">
+              <MappingFragment StoreEntitySet="C_Hoteles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Lugares">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Lugares">
+              <MappingFragment StoreEntitySet="C_Lugares">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Menu">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Menu">
+              <MappingFragment StoreEntitySet="C_Menu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="icono" ColumnName="icono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Moneda">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Moneda">
+              <MappingFragment StoreEntitySet="C_Moneda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Paquetes">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Paquetes">
+              <MappingFragment StoreEntitySet="C_Paquetes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="idMoneda" ColumnName="idMoneda" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Preguntas">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Preguntas">
+              <MappingFragment StoreEntitySet="C_Preguntas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="pregunta" ColumnName="pregunta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Roles">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Roles">
+              <MappingFragment StoreEntitySet="C_Roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Servicios">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Servicios">
+              <MappingFragment StoreEntitySet="C_Servicios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+                <ScalarProperty Name="idMoneda" ColumnName="idMoneda" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Submenu">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Submenu">
+              <MappingFragment StoreEntitySet="C_Submenu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="icono" ColumnName="icono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_tiposEvento">
+            <EntityTypeMapping TypeName="BodasnewModel.C_tiposEvento">
+              <MappingFragment StoreEntitySet="C_tiposEvento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Usuarios">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Usuarios">
+              <MappingFragment StoreEntitySet="C_Usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="BodasnewModel.Logs">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="columna" ColumnName="columna" />
+                <ScalarProperty Name="valorO" ColumnName="valorO" />
+                <ScalarProperty Name="valorN" ColumnName="valorN" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nombreClientes">
+            <EntityTypeMapping TypeName="BodasnewModel.nombreClientes">
+              <MappingFragment StoreEntitySet="nombreClientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paqueteServicio">
+            <EntityTypeMapping TypeName="BodasnewModel.paqueteServicio">
+              <MappingFragment StoreEntitySet="paqueteServicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPaquete" ColumnName="idPaquete" />
+                <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="preguntaRespuesta">
+            <EntityTypeMapping TypeName="BodasnewModel.preguntaRespuesta">
+              <MappingFragment StoreEntitySet="preguntaRespuesta">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
+                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Permisos">
+            <EntityTypeMapping TypeName="BodasnewModel.C_Permisos">
+              <MappingFragment StoreEntitySet="C_Permisos">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idSubmenu" ColumnName="idSubmenu" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

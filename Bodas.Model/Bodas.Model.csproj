@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B11C6F9-E3EF-4442-ABE1-CDA07A00AC76}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bodas.Model</RootNamespace>
+    <AssemblyName>Bodas.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BD\Agenda.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\agendaServicio.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Bodas.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bodas.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Bodas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Bodas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bodas.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Agencia.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Clientes.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Estados.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Horarios.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Hoteles.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Lugares.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Menu.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Moneda.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Paquetes.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Permisos.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Preguntas.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Roles.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Servicios.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Submenu.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_tiposEvento.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C_Usuarios.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Logs.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\nombreClientes.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\paqueteServicio.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\preguntaRespuesta.cs">
+      <DependentUpon>Bodas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Meta\MetaC_Horarios.cs" />
+    <Compile Include="Meta\MetaC_Hoteles.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BD\Bodas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Bodas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="BD\Bodas.edmx.diagram">
+      <DependentUpon>Bodas.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BD\Bodas.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Bodas.Context.cs</LastGenOutput>
+      <DependentUpon>Bodas.edmx</DependentUpon>
+    </Content>
+    <Content Include="BD\Bodas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Bodas.edmx</DependentUpon>
+      <LastGenOutput>Bodas.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
